@@ -46,6 +46,9 @@ public class Car {
     }
 
     public void setGasTankLevel(double gasTankLevel) {
+        if (gasTankLevel > this.gasTankSize) {
+            throw new IllegalArgumentException("Gas tank level cannot exceed tank size.");
+        }
         this.gasTankLevel = gasTankLevel;
     }
 
@@ -62,28 +65,32 @@ public class Car {
     }
 
     /**
-     * Drive the car an amount of miles. If not enough fuel, drive as far as fuel allows.
-     * Adjust fuel levels based on amount needed to drive the distance requested.
-     * Add miles to odometer.
+     * Drive the car for a specified number of miles. If there isn't enough fuel, drive as far as the remaining fuel allows.
+     * Update the fuel level accordingly and add the actual miles driven to the odometer.
      *
-     * @param miles - the miles to drive
+     * @param miles - the number of miles to drive
      */
-    public void drive(double miles)
-    {
-        //adjust fuel based on mpg and miles requested to drive
+    public void drive(double miles) {
         double maxDistance = this.milesPerGallon * this.gasTankLevel;
-        /**the double below uses some syntax called the ternary operator.
-         * if the value of miles is greater than the value of maxDistance,
-         * then milesAbleToTravel = maxDistance.
-         * otherwise, if miles is not greater than maxDistance,
-         * then milesAbleToTravel = miles
-         */
         double milesAbleToTravel = miles > maxDistance ? maxDistance : miles;
         double gallonsUsed = milesAbleToTravel / this.milesPerGallon;
-        this.gasTankLevel = this.gasTankLevel - gallonsUsed;
+        this.gasTankLevel -= gallonsUsed;
         this.odometer += milesAbleToTravel;
     }
 
-    public void addGas(int i) {
+    /**
+     * Add gas to the car's tank.
+     *
+     * @param gallons - the amount of gas in gallons to add to the tank
+     */
+    public void addGas(int gallons) {
+        if (gallons < 0) {
+            throw new IllegalArgumentException("Cannot add a negative amount of gas.");
+        }
+        if (this.gasTankLevel + gallons > this.gasTankSize) {
+            throw new IllegalArgumentException("Attempting to add more gas than the tank can hold.");
+        }
+        this.gasTankLevel += gallons;
     }
 }
+

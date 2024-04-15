@@ -41,8 +41,10 @@ class CarTest {
     //TODO: can't have more gas than tank size, expect an exception
     @Test
     public void testGasOverfillException() {
+        // Ensuring the tank is full to simulate overfill condition correctly.
+        test_car.setGasTankLevel(test_car.getGasTankSize());
         assertThrows(IllegalArgumentException.class, () -> {
-            test_car.addGas(5); // This should cause an exception if the tank is already full or exceeds capacity
-        }, "Shouldn't get here, car cannot have more gas in tank than the size of the tank");
+            test_car.addGas(1); // Attempting to add more gas than the tank can hold should throw an exception
+        });
     }
 }

@@ -1,33 +1,38 @@
 package org.launchcode;
+
 public class BalancedBrackets {
     /*
-     * The function BalancedBrackets should return true if and only if
+     * The function hasBalancedBrackets should return true if and only if
      * the input string has a set of "balanced" brackets.
      *
-     * That is, whether it consists entirely of pairs of opening/closing
-     * brackets (in that order), none of which mis-nest. We consider a bracket
-     * to be square-brackets: [ or ].
+     * Balanced brackets mean that every opening bracket '[' has a corresponding
+     * closing bracket ']', and the brackets are properly nested.
      *
-     * The string may contain non-bracket characters as well.
+     * Examples of strings with balanced brackets include:
+     * "[LaunchCode]", "Launch[Code]", "[]LaunchCode", "", "[]"
      *
-     * These strings have balanced brackets:
-     *  "[LaunchCode]", "Launch[Code]", "[]LaunchCode", "", "[]"
+     * Examples of strings without balanced brackets include:
+     * "[LaunchCode", "Launch]Code[", "[", "]["
      *
-     * While these do not:
-     *   "[LaunchCode", "Launch]Code[", "[", "]["
-     *
-     * @param str - to be validated
-     * @return true if balanced, false otherwise
+     * @param str - the string to be validated
+     * @return true if the brackets in the string are balanced, false otherwise
      */
     public static boolean hasBalancedBrackets(String str) {
-        int brackets = 0;
+        if (str == null) {
+            return false; // Return false if the input string is null
+        }
+
+        int balance = 0;
         for (char ch : str.toCharArray()) {
             if (ch == '[') {
-                brackets++;
+                balance++;
             } else if (ch == ']') {
-                brackets--;
+                if (balance == 0) {
+                    return false;
+                }
+                balance--;
             }
         }
-        return brackets == 0;
+        return balance == 0;
     }
 }

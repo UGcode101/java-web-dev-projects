@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Quiz {
-    private List<Question> questions = new ArrayList<>();
-    private Scanner scanner = new Scanner(System.in);
+    private final List<Question> questions = new ArrayList<>();
+    private final Scanner scanner = new Scanner(System.in);
 
     public void addQuestion(Question question) {
         questions.add(question);

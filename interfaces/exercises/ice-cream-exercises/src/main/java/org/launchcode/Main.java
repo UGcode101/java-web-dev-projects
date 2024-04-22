@@ -12,7 +12,7 @@ public class Main {
 
         Comparator<Flavor> flavorComparator = new FlavorComparator();
         Comparator<Cone> coneComparator = new ConeComparator();
-        Comparator<Topping> toppingComparator = Comparator.comparing(Topping::getName);
+        Comparator<Topping> toppingComparator = new ToppingComparator();
 
         // Sort and display the items
         cones.sort(coneComparator);

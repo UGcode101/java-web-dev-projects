@@ -8,13 +8,19 @@ public class Main {
         Case menu = new Case();
         ArrayList<Flavor> flavors = menu.getFlavors();
         ArrayList<Cone> cones = menu.getCones();
-        Comparator<Flavor> comparator = new FlavorComparator();
+        ArrayList<Topping> toppings = menu.getToppings();
 
-        flavors.sort(comparator);
+        Comparator<Flavor> flavorComparator = new FlavorComparator();
+        Comparator<Cone> coneComparator = new ConeComparator();
+        Comparator<Topping> toppingComparator = Comparator.comparing(Topping::getName);
+
+        // Sort and display the items
+        cones.sort(coneComparator);
+        flavors.sort(flavorComparator);
+        toppings.sort(toppingComparator);
+
+        System.out.println("Flavors: " + flavors);
+        System.out.println("Cones: " + cones);
+        System.out.println("Toppings: " + toppings);
     }
-        // TODO: Use a Comparator class to sort the 'flavors' array alphabetically by the 'name' field.
-
-        // TODO: Use a Comparator class to sort the 'cones' array in increasing order by the 'cost' field.
-
-        // TODO: Print the 'flavors' and 'cones' lists (in a clear manner) to verify the sorting.
-    }
+}

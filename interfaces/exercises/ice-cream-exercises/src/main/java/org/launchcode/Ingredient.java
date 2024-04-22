@@ -43,4 +43,8 @@ public abstract class Ingredient {
                 "Cost: $" + cost + "\n" +
                 "Allergens: " + allergens + "\n";
     }
+
+    public int getAllergensCount() {
+        return allergens.size();  // Return the size of the allergen list
+    }
 }

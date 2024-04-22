@@ -8,7 +8,7 @@ public class Case {
     private ArrayList<Cone> cones = new ArrayList<>();
 
     public Case(){
-        Cone cone1 = new Cone("Waffle", 1.25, new ArrayList<>(Arrays.asList( "gluten")));
+        Cone cone1 = new Cone("Waffle", 1.25, new ArrayList<>(Arrays.asList("gluten")));
         Cone cone2 = new Cone("Sugar", 0.75, new ArrayList<>(Arrays.asList( "gluten")));
         Cone cone3 = new Cone("Wafer", 0.50, new ArrayList<>(Arrays.asList( "gluten")));
         Cone cone4 = new Cone("Bowl", 0.05, new ArrayList<>(Arrays.asList( "none")));

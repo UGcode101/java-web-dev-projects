@@ -1,2 +1,4 @@
 rootProject.name = 'controllers-routing-exercises'
+include 'src:main:controller-exercises'
+findProject(':src:main:controller-exercises')?.name = 'controller-exercises'
 
